@@ -112,9 +112,11 @@ class TetrisEnv(gym.Env):
                 # Save img if recording
                 if record:
                     plt.imshow(prev)
-                    plt.savefig(os.path.join(record, '{}.png'.format(str(self.img_ctr).zfill(5))))
+                    if not os.path.exists("imgs"):
+                        os.mkdir("imgs", 0o666)
+                    plt.savefig('imgs/{:03d}.jpg'.format(env.time))
                     self.img_ctr += 1
-                    plt.clf()
+                    # plt.clf()
 
                 # If we hit the ground, then collision
                 if np.sum(block[-1,:]) > 0:
@@ -155,7 +157,7 @@ class TetrisEnv(gym.Env):
         img = resize(img, (shape_[0] * scaling, shape_[1]*scaling) ,
                            anti_aliasing=False, order=0)
         img =  np.array(np.moveaxis(np.repeat(np.reshape(img, (1, shape_[0] * scaling, shape_[1]*scaling)), 3, axis=0), 0, -1) * 255, dtype='uint8')
-#         print("Tetris img shape: ", img.shape)
+        # print("Tetris img shape: ", img.shape)
         return img
 
     def step(self, action, record=False):
@@ -220,15 +222,15 @@ class TetrisEnv(gym.Env):
         return self.get_obs()
 
 
-# env = TetrisEnv()
-# env.reset()
-# done = False
-#
-# for i in range(100):
-#     if not done:
-#         obs, rew, done, info = env.step(np.random.randint(12))
-#     else:
-#         break
-#     print(info)
-#     env.render()
+env = TetrisEnv()
+env.reset()
+done = False
+
+for i in range(100):
+    if not done:
+        obs, rew, done, info = env.step(np.random.randint(12), record=True)
+    else:
+        break
+    print(info)
+    env.render()
 
