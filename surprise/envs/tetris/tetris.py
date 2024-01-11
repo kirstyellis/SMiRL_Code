@@ -1,12 +1,10 @@
 import os
 import gym
 from gym import spaces
-
 import numpy as np
 import matplotlib.pyplot as plt
 # from scipy.misc import imsave
 import imageio
-
 import pdb
 
 class TetrisEnv(gym.Env):
@@ -221,12 +219,16 @@ class TetrisEnv(gym.Env):
         self.img_ctr = 0
         return self.get_obs()
 
-'''
-env = TetrisEnv()
-env.reset()
 
-for i in range(100):
-    obs, rew, done, info = env.step(np.random.randint(12))
-    print(info)
-    env.render()
-'''
+# env = TetrisEnv()
+# env.reset()
+# done = False
+#
+# for i in range(100):
+#     if not done:
+#         obs, rew, done, info = env.step(np.random.randint(12))
+#     else:
+#         break
+#     print(info)
+#     env.render()
+
