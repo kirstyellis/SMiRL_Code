@@ -66,15 +66,15 @@ class EpisodicTetrisSurprise(BaseSurpriseWrapper):
         self.done = False
         return self.get_obs(self.env.get_obs())
 
-env = EpisodicTetrisSurprise()
-obs = env.reset()
-done = False
-
-
-while not done:
-    obs, rew, done, info = env.step(np.random.randint(12))
-    print(info)
-    env.render()
-    #print(obs)
-    #env.env.render(text=True)
+# env = EpisodicTetrisSurprise()
+# obs = env.reset()
+# done = False
+#
+#
+# while not done:
+#     obs, rew, done, info = env.step(np.random.randint(12))
+#     print(info)
+#     env.render()
+#     #print(obs)
+#     #env.env.render(text=True)
 

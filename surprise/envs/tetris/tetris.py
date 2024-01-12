@@ -114,7 +114,7 @@ class TetrisEnv(gym.Env):
                     plt.imshow(prev)
                     if not os.path.exists("imgs"):
                         os.mkdir("imgs", 0o666)
-                    plt.savefig('imgs/{:03d}.jpg'.format(env.time))
+                    plt.savefig('imgs/{:03d}.jpg'.format(self.time))
                     self.img_ctr += 1
                     # plt.clf()
 
@@ -222,15 +222,14 @@ class TetrisEnv(gym.Env):
         return self.get_obs()
 
 
-env = TetrisEnv()
-env.reset()
-done = False
-
-for i in range(100):
-    if not done:
-        obs, rew, done, info = env.step(np.random.randint(12), record=True)
-    else:
-        break
-    print(info)
-    env.render()
-
+# env = TetrisEnv()
+# env.reset()
+# done = False
+#
+# for i in range(100):
+#     if not done:
+#         obs, rew, done, info = env.step(np.random.randint(12), record=True)
+#     else:
+#         break
+#     print(info)
+#     env.render()
