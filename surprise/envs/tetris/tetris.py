@@ -112,8 +112,9 @@ class TetrisEnv(gym.Env):
                 # Save img if recording
                 if record:
                     plt.imshow(prev)
-                    if not os.path.exists("imgs"):
-                        os.mkdir("imgs", 0o666)
+                    dir_path = os.path.dirname(os.path.realpath(__file__))
+                    if not os.path.exists(dir_path + "/imgs"):
+                        os.mkdir(dir_path + "/imgs", 0o777)
                     plt.savefig('imgs/{:03d}.jpg'.format(self.time))
                     self.img_ctr += 1
                     # plt.clf()
